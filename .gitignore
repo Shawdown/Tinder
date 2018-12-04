@@ -1,5 +1,4 @@
 proxying.txt
-config.py
 api_abstract.py
 *.pyc
 __pycache__
