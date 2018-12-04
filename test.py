@@ -1,6 +1,6 @@
 from tinder_api_sms import *
 
-while(1):
+while 1:
     rec = get_recommendations()
 
     likedTotal = 0
