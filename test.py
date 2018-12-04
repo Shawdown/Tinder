@@ -1,5 +1,7 @@
 from tinder_api_sms import *
 
+print("matches count: " + str(len(all_matches(100)["data"]["matches"])))
+
 while 1:
     rec = get_recommendations()
 
