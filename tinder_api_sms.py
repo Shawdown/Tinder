@@ -142,6 +142,14 @@ def reset_webprofileusername(username):
     except requests.exceptions.RequestException as e:
         print("Something went wrong. Could not delete webprofile username:", e)
 
+def getObject():
+    try:
+        url = config.host + '/profile'
+        r = requests.get(url, headers=headers)
+        return r.json()
+    except requests.exceptions.RequestException as e:
+        print("Something went wrong. Could not delete webprofile username:", e)
+
 def get_person(id):
     '''
     Gets a user's profile via their id
