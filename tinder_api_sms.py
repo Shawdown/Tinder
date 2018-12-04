@@ -225,7 +225,7 @@ def match_info(match_id):
 
 def all_matches(countLimit):
     try:
-        url = config.host + '/v2/matches?count=' + str(countLimit) + '&message=1'
+        url = config.host + '/v2/matches?count=' + str(countLimit) + '&message=0'
         r = requests.get(url, headers=headers)
         return r.json()
     except requests.exceptions.RequestException as e:
