@@ -5,7 +5,8 @@ from random import random
 from time import sleep
 
 import config
-import tinder_api as api
+#import tinder_api as api
+import tinder_api_sms as api
 
 
 '''

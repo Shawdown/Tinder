@@ -223,9 +223,9 @@ def match_info(match_id):
     except requests.exceptions.RequestException as e:
         print("Something went wrong. Could not get your match info:", e)
 
-def all_matches(countLimit):
+def all_matches(countLimit, includeMessages):
     try:
-        url = config.host + '/v2/matches?count=' + str(countLimit) + '&message=0'
+        url = config.host + '/v2/matches?count=' + str(countLimit) + '&message=' + ('1' if includeMessages else '0')
         r = requests.get(url, headers=headers)
         return r.json()
     except requests.exceptions.RequestException as e:

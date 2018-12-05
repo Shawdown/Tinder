@@ -5,10 +5,10 @@ import config
 import requests
 
 headers = {
-    'app_version': '6.9.4',
+    'app_version': '10.2.1',
     'platform': 'ios',
     "content-type": "application/json",
-    "User-agent": "Tinder/7.5.3 (iPhone; iOS 10.3.2; Scale/2.00)",
+    "User-agent": "Tinder/10.2.0(iPhone; iOS 10.3.2; Scale/2.00)",
     "Accept": "application/json"
 }
 
