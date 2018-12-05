@@ -3,5 +3,6 @@
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$/tinder-data/matches-messages/Alina-59076e3c4bdaa7fb04f11bb4.txt" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/tinder-data/matches.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tinder-data/swipe-log.txt" charset="UTF-8" />
   </component>
 </project>

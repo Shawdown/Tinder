@@ -158,7 +158,7 @@ def pause():
     suspicious!
     '''
     nap_length = 3 * random()
-    print('Napping for %f seconds...' % nap_length)
+    #print('Napping for %f seconds...' % nap_length)
     sleep(nap_length)
 
 if __name__ == '__main__':

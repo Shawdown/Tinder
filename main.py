@@ -78,7 +78,7 @@ for match in matches:
         p = match["person"]
         mm = match["messages"]
 
-        with open("tinder-data/matches-messages/" + match["person"]["name"] + "-" + match["person"]["_id"] + ".txt", "w", encoding='utf-8') as mf:
+        with open("tinder-data/matches-messages/" + str(match["created_date"]).replace('T', '_').replace(':', '-')[:-5] + " " + match["person"]["name"] + "-" + match["person"]["_id"] + ".txt", "w", encoding='utf-8') as mf:
             for m in mm:
                 mFrom = m["from"]
                 mFromName = my_name if mFrom == my_id else p["name"]
@@ -93,11 +93,11 @@ for match in matches:
 
     except Exception as e:
         print("Got an exception while saving match messages: " + str(e))
-exit(2)
+
 #
-# We're starting to like people (LOL) and log it
+# We're starting to like people and log it
 #
-sl = open("tinder-data/swipe-log.txt", "a+")
+sl = open("tinder-data/swipe-log.txt", "a+", encoding='utf-8')
 
 while 1:
     rec = get_recommendations()
@@ -108,7 +108,7 @@ while 1:
         print("Found " + str(len(rec["results"])) + " people to like.")
 
         for girl in rec["results"]:
-            #like(girl["_id"])
+            like(girl["_id"])
             likedTotal += 1
 
             logString = time.strftime("%x %X") + " | LIKE | [id=" + girl["_id"] + ", name=" + girl["name"] + "]\n"
@@ -119,7 +119,7 @@ while 1:
             pause()
 
     except Exception as e:
-        print("Found no girls")
+        print("No people found :(")
         break
 
     print("Liked " + str(likedTotal) + " people.")
