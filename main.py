@@ -1,6 +1,7 @@
 import time
 import os
 import re
+import sys
 
 from tinder_api_sms import *
 #from tinder_api import *
@@ -99,6 +100,10 @@ for match in matches:
 #
 sl = open("tinder-data/swipe-log.txt", "a+", encoding='utf-8')
 
+if(sl.closed):
+    print("couldn't create/open swipe-log.txt")
+    exit(2)
+
 while 1:
     rec = get_recommendations()
 
@@ -114,12 +119,16 @@ while 1:
             logString = time.strftime("%x %X") + " | LIKE | [id=" + girl["_id"] + ", name=" + girl["name"] + "]\n"
 
             print(logString)
+            sys.stdout.flush()
 
-            sl.write(logString)
+            sl.write(str(logString))
             pause()
 
     except Exception as e:
-        print("No people found :(")
+        if(str(e) == "'results'"):
+            print("No people found :(")
+        else:
+            print("Exception: [" + str(e) + "]")
         break
 
     print("Liked " + str(likedTotal) + " people.")
