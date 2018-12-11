@@ -104,6 +104,8 @@ if(sl.closed):
     print("couldn't create/open swipe-log.txt")
     exit(2)
 
+prevRec = None
+
 while 1:
     rec = get_recommendations()
 
@@ -113,15 +115,23 @@ while 1:
         print("Found " + str(len(rec["results"])) + " people to like.")
 
         for girl in rec["results"]:
-            like(girl["_id"])
+            likeRet = like(girl["_id"])
+            likesRemaining = likeRet["likes_remaining"]
+            if(likesRemaining == 0):
+                print("No more likes remaining :(")
+                break
+
             likedTotal += 1
 
             logString = time.strftime("%x %X") + " | LIKE | [id=" + girl["_id"] + ", name=" + girl["name"] + "]\n"
+
+            print("Likes remaining: " + str(likesRemaining))
 
             print(logString)
             sys.stdout.flush()
 
             sl.write(str(logString))
+            sl.flush()
             pause()
 
     except Exception as e:
@@ -132,5 +142,7 @@ while 1:
         break
 
     print("Liked " + str(likedTotal) + " people.")
+
+    prevRec = rec
 
 sl.close()
